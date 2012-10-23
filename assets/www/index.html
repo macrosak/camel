@@ -1,182 +1,274 @@
 <!DOCTYPE html>
 <html style="margin: 0px; padding: 0px;">
 <head>
-    <title>Test</title>
+<title>Test</title>
 
-    <!-- See http://developer.apple.com/library/safari/#documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html -->
-    <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<!-- See http://developer.apple.com/library/safari/#documentation/appleapplications/reference/SafariHTMLRef/Articles/MetaTags.html -->
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
 
-    <!-- See https://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
-    <link rel="apple-touch-icon" href="http://www.facebookmobileweb.com/hackbook/img/iphone_icon.png"/>
-    <link rel="apple-touch-startup-image" href="http://www.facebookmobileweb.com/hackbook/img/iphone_splash.png"/>
-    <link rel="apple-touch-icon-precomposed" href="http://www.facebookmobileweb.com/hackbook/img/iphone_icon.png"/>
+<!-- See https://developer.apple.com/library/safari/#documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
+<link rel="apple-touch-icon" href="http://www.facebookmobileweb.com/hackbook/img/iphone_icon.png"/>
+<link rel="apple-touch-startup-image" href="http://www.facebookmobileweb.com/hackbook/img/iphone_splash.png"/>
+<link rel="apple-touch-icon-precomposed" href="http://www.facebookmobileweb.com/hackbook/img/iphone_icon.png"/>
 
-    <!-- See http://davidbcalhoun.com/2010/viewport-metatag for information on the viewport tag. -->
-    <meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+<!-- See http://davidbcalhoun.com/2010/viewport-metatag for information on the viewport tag. -->
+<meta name="viewport" content="initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
 
-    <style>
+<style>
 
 
-        @font-face {
-            font-family: 'QuoteFont';
-            font-style: normal;
-            font-weight: 400;
-            src: local('QuoteFont'), local('QuoteFont-Regular'), url(quote-font.woff) format('woff');
+        /*@font-face {*/
+        /*font-family: 'QuoteFont';*/
+        /*font-style: normal;*/
+        /*font-weight: 400;*/
+        /*src: local('QuoteFont'), local('QuoteFont-Regular'), url(quote-font.woff) format('woff');*/
+        /*src: local('QuoteFont'), local('QuoteFont-Regular'), url("file:///android_asset/www/quote-font.woff") format('woff');*/
+        /*src: url("file:///android_asset/www/quote-font2.ttf") format('truetype');*/
+        /*}*/
+
+    @font-face {
+        font-family: 'QuoteFont';
+        src: url('quote-font2.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    .button {
+        border-top: 1px solid #000000;
+        background: #a8a814;
+        background: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#a8a814));
+        background: -webkit-linear-gradient(top, #ffff00, #a8a814);
+        background: -moz-linear-gradient(top, #ffff00, #a8a814);
+        background: -ms-linear-gradient(top, #ffff00, #a8a814);
+        background: -o-linear-gradient(top, #ffff00, #a8a814);
+        padding: 14px 28px;
+        -webkit-border-radius: 13px;
+        -moz-border-radius: 13px;
+        border-radius: 13px;
+        -webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+        -moz-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+        /*box-shadow: rgba(0,0,0,1) 0 1px 0;*/
+        /*text-shadow: rgba(0,0,0,.4) 0 1px 0;*/
+        color: #000000;
+        font-size: 20px;
+        font-family: 'QuoteFont';
+        text-decoration: none;
+        vertical-align: middle;
+        width: 160px;
+        max-width: 160px;
+    }
+
+    .button:active {
+        border-top-color: #ffff00;
+        background: #ffff00;
+    }
+
+    .drop-shadow {
+        -webkit-box-shadow: 7px 7px 13px rgba(50, 50, 50, 0.75);
+        -moz-box-shadow: 7px 7px 13px rgba(50, 50, 50, 0.75);
+        box-shadow: 7px 7px 13px rgba(50, 50, 50, 0.75);
+    }
+
+    .sweet {
+        font-family: 'QuoteFont', cursive;
+        font-size: 60px;
+        color: #ffff00;
+        text-shadow: 0px -3px 0px #000000, 3px 0px 0px #000000, 0px 3px 0px #000000, -3px 0px 0px #000000;
+    }
+
+    #startPage {
+        -webkit-border-radius: 13px;
+        -moz-border-radius: 13px;
+        text-align: center;
+        position: relative;
+        width: 250px;
+        height: 80%;
+        background-color: black;
+        border: 2px solid #ffff00;
+        top: 10%;
+        left: 50%;
+        margin-left: -125px;
+    }
+</style>
+<script type="text/javascript" src="jquery-1.8.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"></script>
+<script type="text/javascript">
+
+    var app = document.URL.indexOf('android_asset') !== -1;
+    if (app) {
+        // PhoneGap application
+        document.addEventListener("deviceready", initTimeout, false);
+        window.addEventListener("orientationchange", resize, false);
+    } else {
+        // Web page
+        jQuery(document).ready(function () {
+            jQuery('.page').hide();
+            _currentPage = jQuery('#startPage');
+            init();
+            _currentPage.show();
+        });
+    }
+    var QUOTES = ['Sweet', 'WOW', 'Nice', 'Dirty', 'Nasty', 'Hot', 'Sexy'];
+    var IMG_COUNT = 2;
+
+
+    function getPicture() {
+        jQuery('.page').hide();
+        navigator.camera.getPicture(onSuccess, onFail, { quality:50,
+            destinationType:Camera.DestinationType.DATA_URL
+        });
+    }
+
+    var _cameraImage
+    function onSuccess(imageData) {
+        _cameraImage = new Image();
+        _cameraImage.addEventListener('load', onImage, false);
+        _cameraImage.src = "data:image/jpeg;base64," + imageData;
+    }
+
+    function onFail(message) {
+        alert('Failed because: ' + message);
+    }
+
+    function browserTest() {
+        jQuery('.page').hide();
+        _cameraImage = new Image();
+        _cameraImage.addEventListener('load', onImage, false);
+        _cameraImage.src = "test.jpg"
+    }
+
+    var _canvas;
+    var _img;
+    var _restart;
+    var _quote;
+    var _imgWidth;
+    var _imgHeight;
+    var _currentPage;
+
+
+    function resize() {
+        jQuery('.page').hide();
+        setTimeout(init, 100);
+        setTimeout(resizeElements, 101);
+        setTimeout(function () {
+            _currentPage.show()
+        }, 102);
+
+    }
+    function initTimeout() {
+        jQuery('.page').hide();
+        _currentPage = jQuery('#startPage');
+        setTimeout(init, 100);
+        setTimeout(function () {
+            _currentPage.show()
+        }, 101);
+    }
+    function init() {
+        var conatiner = document.getElementById('container');
+        container.style.width = window.innerWidth + 'px';
+        container.style.height = window.innerHeight + 'px';
+        container.style.display = 'block';
+    }
+
+    function resizeElements() {
+
+        _canvas = document.getElementById('canvas');
+        _img = document.getElementById('panties');
+        _restart = document.getElementById('restartButton');
+        _quote = document.getElementById('quote');
+
+        _imgWidth = Math.floor(Math.max(window.innerWidth, window.innerHeight) * 0.45);
+        _imgWidth = Math.min(window.innerWidth, window.innerHeight, _imgWidth)
+        _imgHeight = _imgWidth;
+
+        _canvas.width = _imgWidth;
+        _canvas.height = _imgHeight;
+        _img.width = _imgWidth;
+        _img.height = _imgHeight;
+
+        if (window.innerWidth > window.innerHeight) {
+            _canvas.style.left = (window.innerWidth - 2 * _imgWidth) / 3 + 'px';
+            _canvas.style.top = (window.innerHeight - _imgHeight) / 2 + 'px';
+            _img.style.right = (window.innerWidth - 2 * _imgWidth) / 3 + 'px';
+            _img.style.top = (window.innerHeight - _imgHeight) / 2 + 'px';
+            _img.style.left = '';
+            _img.style.bottom = '';
+        } else {
+            _canvas.style.left = (window.innerWidth - _imgWidth) / 2 + 'px';
+            _canvas.style.top = (window.innerHeight - 2 * _imgHeight) / 3 + 'px';
+            _img.style.left = (window.innerWidth - _imgWidth) / 2 + 'px';
+            _img.style.bottom = (window.innerHeight - 2 * _imgHeight) / 3 + 'px';
+            _img.style.right = '';
+            _img.style.top = '';
+        }
+        _restart.style.left = (window.innerWidth - 160) / 2 + 'px';
+        _restart.style.bottom = 10 + 'px';
+        _quote.style.left = (window.innerWidth - 400) / 2 + 'px';
+        _quote.style.top = (window.innerHeight - 400) / 2 + 'px';
+        var rotation = Math.floor(Math.random() * 10) + 10;
+        rotation *= Math.random() > 0.5 ? -1 : 1;
+
+        _quote.style.webkitTransform = 'rotate(' + rotation + 'deg)';   //Chrome and Safari
+        _quote.style.MozTransform = 'rotate(' + rotation + 'deg)';      //Firefox
+
+        _canvas.style.border = "2px solid  #ffff00";
+        _img.style.border = "2px solid  #ffff00";
+        var sWidth = Math.min(_cameraImage.width, _cameraImage.height);
+        var sx = (_cameraImage.width - sWidth) / 2;
+        var sy = (_cameraImage.height - sWidth) / 2;
+        _canvas.getContext("2d").drawImage(_cameraImage, sx, sy, sWidth, sWidth, 0, 0, _imgWidth, _imgHeight);
+    }
+    function onImage(e) {
+        resizeElements();
+        _img = document.getElementById('panties');
+        _quote = document.getElementById('quote');
+
+        var quoteText = QUOTES[Math.floor(Math.random() * QUOTES.length)];
+        _quote.innerText = "'" + quoteText + "!'";
+        var oldImage = _img.src;
+        var newImage = _img.src;
+
+
+        while (oldImage.indexOf(newImage, oldImage.length - newImage.length) !== -1) {
+            newImage = 'img/cameltoe' + Math.floor(Math.random() * IMG_COUNT + 1) + '.jpg';
         }
 
-        .button {
-            border-top: 1px solid #000000;
-            background: #a8a814;
-            background: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#a8a814));
-            background: -webkit-linear-gradient(top, #ffff00, #a8a814);
-            background: -moz-linear-gradient(top, #ffff00, #a8a814);
-            background: -ms-linear-gradient(top, #ffff00, #a8a814);
-            background: -o-linear-gradient(top, #ffff00, #a8a814);
-            padding: 14px 28px;
-            -webkit-border-radius: 13px;
-            -moz-border-radius: 13px;
-            border-radius: 13px;
-            -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
-            -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
-            /*box-shadow: rgba(0,0,0,1) 0 1px 0;*/
-            /*text-shadow: rgba(0,0,0,.4) 0 1px 0;*/
-            color: #000000;
-            font-size: 20px;
-            font-family: 'QuoteFont', cursive;
-            text-decoration: none;
-            vertical-align: middle;
-        }
+        _img.src = newImage;
+        jQuery('.page').hide();
+        _currentPage = jQuery('#camelToePage');
+        _currentPage.show();
+    }
 
-        .button:active {
-            border-top-color: #ffff00;
-            background: #ffff00;
-        }
-
-        .drop-shadow {
-            -webkit-box-shadow: 7px 7px 13px rgba(50, 50, 50, 0.75);
-            -moz-box-shadow: 7px 7px 13px rgba(50, 50, 50, 0.75);
-            box-shadow: 7px 7px 13px rgba(50, 50, 50, 0.75);
-        }
-
-        .sweet {
-            font-family: 'QuoteFont', cursive;
-            font-size: 60px;
-            color: #ffff00;
-            text-shadow: 0px -3px 0px #000000, 3px 0px 0px #000000, 0px 3px 0px #000000, -3px 0px 0px #000000;
-        }
-    </style>
-    <script type="text/javascript" src="jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"></script>
-    <script type="text/javascript">
-
-        var QUOTES = ['Sweet', 'WOW', 'Nice', 'Dirty', 'Nasty', 'Hot', 'Sexy'];
-        var IMG_COUNT = 1;
-
-        function getPicture() {
-            jQuery('#startPage').hide();
-            navigator.camera.getPicture(onSuccess, onFail, { quality:50,
-                destinationType:Camera.DestinationType.DATA_URL
-            });
-        }
-
-        var _cameraImage
-        function onSuccess(imageData) {
-            _cameraImage = new Image();
-            _cameraImage.addEventListener('load', onImage, false);
-            _cameraImage.src = "data:image/jpeg;base64," + imageData;
-        }
-
-        function onFail(message) {
-            alert('Failed because: ' + message);
-        }
-
-        function browserTest() {
-            jQuery('#startPage').hide();
-            _cameraImage = new Image();
-            _cameraImage.addEventListener('load', onImage, false);
-            _cameraImage.src = "test.jpg"
-        }
-
-        var _canvas;
-        var _img;
-        var _restart;
-        var _quote;
-        var _imgWidth;
-        var _imgHeight;
-
-
-        function init() {
-            var conatiner = document.getElementById('container');
-            container.style.width = window.innerWidth + 'px';
-            container.style.height = window.innerHeight + 'px';
-            container.style.display = 'block';
-        }
-        function onImage(e) {
-            _canvas = document.getElementById('canvas');
-            _img = document.getElementById('panties');
-            _restart = document.getElementById('restartButton');
-            _quote = document.getElementById('quote');
-
-            _imgWidth = Math.floor(Math.max(window.innerWidth, window.innerHeight) * 0.45);
-            _imgWidth = Math.min(window.innerWidth, window.innerHeight, _imgWidth)
-            _imgHeight = _imgWidth;
-
-            _canvas.width = _imgWidth;
-            _canvas.height = _imgHeight;
-            _img.width = _imgWidth;
-            _img.height = _imgHeight;
-
-            if (window.innerWidth > window.innerHeight) {
-                _canvas.style.left = (window.innerWidth - 2 * _imgWidth) / 3 + 'px';
-                _canvas.style.top = (window.innerHeight - _imgHeight) / 2 + 'px';
-                _img.style.right = (window.innerWidth - 2 * _imgWidth) / 3 + 'px';
-                _img.style.top = (window.innerHeight - _imgHeight) / 2 + 'px';
-            } else {
-                _canvas.style.left = (window.innerWidth - _imgWidth) / 2 + 'px';
-                _canvas.style.top = (window.innerHeight - 2 * _imgHeight) / 3 + 'px';
-                _img.style.left = (window.innerWidth - _imgWidth) / 2 + 'px';
-                _img.style.bottom = (window.innerHeight - 2 * _imgHeight) / 3 + 'px';
-            }
-            _restart.style.left = (window.innerWidth - 271) / 2 + 'px';
-            _restart.style.bottom = 10 + 'px';
-            _quote.style.left = (window.innerWidth - 400) / 2 + 'px';
-            _quote.style.top = (window.innerHeight - 400) / 2 + 'px';
-            var rotation = Math.floor(Math.random() * 10) + 10;
-            rotation *= Math.random() > 0.5 ? -1 : 1;
-            var quoteText = QUOTES[Math.floor(Math.random()*QUOTES.length)];
-            _quote.innerText = "'" + quoteText + "!'";
-            _quote.style.webkitTransform = 'rotate(' + rotation + 'deg)';   //Chrome and Safari
-            _quote.style.MozTransform = 'rotate(' + rotation + 'deg)';      //Firefox
-
-            _canvas.style.border = "2px solid  #ffff00";
-            _img.style.border = "2px solid  #ffff00";
-            var sWidth = Math.min(_cameraImage.width, _cameraImage.height);
-            var sx = (_cameraImage.width - sWidth) / 2;
-            var sy = (_cameraImage.height - sWidth) / 2;
-            _canvas.getContext("2d").drawImage(_cameraImage, sx, sy, sWidth, sWidth, 0, 0, _imgWidth, _imgHeight);
-            _img.src = 'img/cameltoe' + Math.floor(Math.random() * IMG_COUNT + 1)+ '.jpg'
-            jQuery('#camelToePage').show();
-        }
-
-    </script>
+</script>
 </head>
-<body style="margin: 0px; padding: 0px; background-color: black" onload="init()">
-<div style="display: none; position: relative" id="container">
-    <div id="startPage" style="text-align: center">
-        <button id="startButton" class="button startButton" onclick="getPicture()">Take picture!</button><br/>
-        <button id="" class="button startButton" onclick="browserTest()">Test!</button>
+<body style="margin: 0px; padding: 0px; background-color: black">
+<div style="display: none; position: relative; background-image: url(bg2.png)" id="container">
+    <div id="startPage" style="display: none" class="page">
+        <div style="padding: 45px">
+
+            <button id="startButton" class="button startButton" onclick="getPicture()">Take picture!</button>
+            <br/>
+            <br/>
+            <button id="" class="button startButton" onclick="browserTest()">Test!</button>
+        </div>
     </div>
-    <div id="camelToePage" style="display: none">
+    <div id="camelToePage" style="display: none" class="page">
 
         <canvas id="canvas" style="position: absolute" width="0" height="0" class="drop-shadow"></canvas>
         <img id="panties" style="position: absolute" width="0" height="0" class="drop-shadow" src=""/>
 
-        <button id="restartButton" class="button startButton" style="position: absolute" onclick="getPicture()">Take
-            another picture!
+        <button id="restartButton" class="button startButton" style="position: absolute" onclick="getPicture()">
+            Restart!
+        </button>
+        <button id="restartButton2" class="button startButton" style="position: absolute" onclick="browserTest()">
+            Restart Browser!
         </button>
 
-        <div id="quote" class="sweet" style="position: absolute; z-index: 900;width: 400px; height:400px;text-align: center; vertical-align: middle; line-height: 400px">'Sweet!'</div>
+        <div id="quote" class="sweet"
+             style="position: absolute; z-index: 900;width: 400px; height:400px;text-align: center; vertical-align: middle; line-height: 400px">
+            'Sweet!'
+        </div>
     </div>
 
 
