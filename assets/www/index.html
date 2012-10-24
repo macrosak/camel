@@ -18,258 +18,391 @@
 <style>
 
 
-        /*@font-face {*/
-        /*font-family: 'QuoteFont';*/
-        /*font-style: normal;*/
-        /*font-weight: 400;*/
-        /*src: local('QuoteFont'), local('QuoteFont-Regular'), url(quote-font.woff) format('woff');*/
-        /*src: local('QuoteFont'), local('QuoteFont-Regular'), url("file:///android_asset/www/quote-font.woff") format('woff');*/
-        /*src: url("file:///android_asset/www/quote-font2.ttf") format('truetype');*/
-        /*}*/
+      /*@font-face {*/
+      /*font-family: 'QuoteFont';*/
+      /*font-style: normal;*/
+      /*font-weight: 400;*/
+      /*src: local('QuoteFont'), local('QuoteFont-Regular'), url(quote-font.woff) format('woff');*/
+      /*src: local('QuoteFont'), local('QuoteFont-Regular'), url("file:///android_asset/www/quote-font.woff") format('woff');*/
+      /*src: url("file:///android_asset/www/quote-font2.ttf") format('truetype');*/
+      /*}*/
 
-    @font-face {
-        font-family: 'QuoteFont';
-        src: url('quote-font2.ttf') format('truetype');
-        font-weight: normal;
-        font-style: normal;
-    }
+   @font-face {
+      font-family: 'QuoteFont';
+      src: url('quote-font2.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+   }
 
-    .button {
-        border-top: 1px solid #000000;
-        background: #a8a814;
-        background: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#a8a814));
-        background: -webkit-linear-gradient(top, #ffff00, #a8a814);
-        background: -moz-linear-gradient(top, #ffff00, #a8a814);
-        background: -ms-linear-gradient(top, #ffff00, #a8a814);
-        background: -o-linear-gradient(top, #ffff00, #a8a814);
-        padding: 14px 28px;
-        -webkit-border-radius: 13px;
-        -moz-border-radius: 13px;
-        border-radius: 13px;
-        -webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-        -moz-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
-        /*box-shadow: rgba(0,0,0,1) 0 1px 0;*/
-        /*text-shadow: rgba(0,0,0,.4) 0 1px 0;*/
-        color: #000000;
-        font-size: 20px;
-        font-family: 'QuoteFont';
-        text-decoration: none;
-        vertical-align: middle;
-        width: 160px;
-        max-width: 160px;
-    }
+   .button {
+      border-top: 1px solid #000000;
+      background: #a8a814;
+      background: -webkit-gradient(linear, left top, left bottom, from(#ffff00), to(#a8a814));
+      background: -webkit-linear-gradient(top, #ffff00, #a8a814);
+      background: -moz-linear-gradient(top, #ffff00, #a8a814);
+      background: -ms-linear-gradient(top, #ffff00, #a8a814);
+      background: -o-linear-gradient(top, #ffff00, #a8a814);
+      padding: 14px 28px;
+      -webkit-border-radius: 13px;
+      -moz-border-radius: 13px;
+      border-radius: 13px;
+      -webkit-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+      -moz-box-shadow: rgba(0, 0, 0, 1) 0 1px 0;
+      /*box-shadow: rgba(0,0,0,1) 0 1px 0;*/
+      /*text-shadow: rgba(0,0,0,.4) 0 1px 0;*/
+      color: #000000;
+      font-size: 20px;
+      font-family: 'QuoteFont';
+      text-decoration: none;
+      vertical-align: middle;
+      width: 160px;
+      max-width: 160px;
+   }
 
-    .button:active {
-        border-top-color: #ffff00;
-        background: #ffff00;
-    }
+   .button:active {
+      border-top-color: #ffff00;
+      background: #ffff00;
+   }
 
-    .drop-shadow {
-        -webkit-box-shadow: 7px 7px 13px rgba(50, 50, 50, 0.75);
-        -moz-box-shadow: 7px 7px 13px rgba(50, 50, 50, 0.75);
-        box-shadow: 7px 7px 13px rgba(50, 50, 50, 0.75);
-    }
+   .drop-shadow {
+      -webkit-box-shadow: 7px 7px 13px rgba(50, 50, 50, 0.75);
+      -moz-box-shadow: 7px 7px 13px rgba(50, 50, 50, 0.75);
+      box-shadow: 7px 7px 13px rgba(50, 50, 50, 0.75);
+   }
 
-    .sweet {
-        font-family: 'QuoteFont', cursive;
-        font-size: 60px;
-        color: #ffff00;
-        text-shadow: 0px -3px 0px #000000, 3px 0px 0px #000000, 0px 3px 0px #000000, -3px 0px 0px #000000;
-    }
+   .sweet {
+      font-family: 'QuoteFont', cursive;
+      font-size: 60px;
+      color: #ffff00;
+      text-shadow: 0px -3px 0px #000000, 3px 0px 0px #000000, 0px 3px 0px #000000, -3px 0px 0px #000000;
+   }
 
-    #startPage {
-        -webkit-border-radius: 13px;
-        -moz-border-radius: 13px;
-        text-align: center;
-        position: relative;
-        width: 250px;
-        height: 80%;
-        background-color: black;
-        border: 2px solid #ffff00;
-        top: 10%;
-        left: 50%;
-        margin-left: -125px;
-    }
+   #startPage {
+      -webkit-border-radius: 13px;
+      -moz-border-radius: 13px;
+      text-align: center;
+      position: relative;
+      width: 250px;
+      height: 80%;
+      background-color: black;
+      border: 2px solid #ffff00;
+      top: 10%;
+      left: 50%;
+      margin-left: -125px;
+   }
 </style>
 <script type="text/javascript" src="jquery-1.8.2.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="cordova-2.1.0.js"></script>
 <script type="text/javascript">
 
-    var app = document.URL.indexOf('android_asset') !== -1;
-    if (app) {
-        // PhoneGap application
-        document.addEventListener("deviceready", initTimeout, false);
-        window.addEventListener("orientationchange", resize, false);
-    } else {
-        // Web page
-        jQuery(document).ready(function () {
-            jQuery('.page').hide();
-            _currentPage = jQuery('#startPage');
-            init();
-            _currentPage.show();
-        });
-    }
-    var QUOTES = ['Sweet', 'WOW', 'Nice', 'Dirty', 'Nasty', 'Hot', 'Sexy'];
-    var IMG_COUNT = 22;
+   var app = document.URL.indexOf('android_asset') !== -1;
+   if (app) {
+      // PhoneGap application
+      document.addEventListener("deviceready", initTimeout, false);
+      window.addEventListener("orientationchange", resize, false);
+
+   } else {
+      // Web page
+      jQuery(document).ready(function () {
+         jQuery('.page').hide();
+         _currentPage = jQuery('#startPage');
+         init();
+         _currentPage.show();
+      });
+   }
+   var QUOTES = ['Sweet', 'WOW', 'Nice', 'Dirty', 'Nasty', 'Hot', 'Sexy'];
+   var IMG_COUNT = 22;
 
 
-    function getPicture() {
-        jQuery('.page').hide();
-        navigator.camera.getPicture(onSuccess, onFail, { quality:50,
-            destinationType:Camera.DestinationType.DATA_URL
-        });
-    }
+   function getPicture(sourceType) {
+      jQuery('.page').hide();
+      navigator.camera.getPicture(onSuccess, onFail, { quality:50,
+//         destinationType:Camera.DestinationType.DATA_URL,
+         destinationType:Camera.DestinationType.FILE_URI,
+         correctOrientation: true,
+         sourceType: sourceType
+      });
+   }
 
-    var _cameraImage
-    function onSuccess(imageData) {
-        _cameraImage = new Image();
-        _cameraImage.addEventListener('load', onImage, false);
-        _cameraImage.src = "data:image/jpeg;base64," + imageData;
-    }
+   var _cameraImage
+   function onSuccess(imageData) {
+      _cameraImage = new Image();
+      _cameraImage.addEventListener('load', onImage, false);
+//      _cameraImage.src = "data:image/jpeg;base64," + imageData;
+      _cameraImage.src = imageData;
+   }
 
-    function onFail(message) {
-        alert('Failed because: ' + message);
-    }
+   function onFail(message) {
+      alert('Failed because: ' + message);
+   }
 
-    function browserTest() {
-        jQuery('.page').hide();
-        _cameraImage = new Image();
-        _cameraImage.addEventListener('load', onImage, false);
-        _cameraImage.src = "test.jpg"
-    }
+   function browserTest() {
+      jQuery('.page').hide();
+      _cameraImage = new Image();
+      _cameraImage.addEventListener('load', onImage, false);
+      _cameraImage.src = "test.jpg"
+   }
 
-    var _canvas;
-    var _img;
-    var _restart;
-    var _quote;
-    var _imgWidth;
-    var _imgHeight;
-    var _currentPage;
+   var _img;
+   var _imgWidth;
+   var _imgHeight;
+   var _currentPage;
 
+   var _scanImg;
 
-    function resize() {
-        jQuery('.page').hide();
-        setTimeout(init, 100);
-        setTimeout(resizeElements, 101);
-        setTimeout(function () {
-            _currentPage.show()
-        }, 102);
+   function showPage(page) {
+      _currentPage = jQuery('#' + page);
+      jQuery('.page').hide();
+      _currentPage.show();
 
-    }
-    function initTimeout() {
-        jQuery('.page').hide();
-        _currentPage = jQuery('#startPage');
-        setTimeout(init, 100);
-        setTimeout(function () {
-            _currentPage.show()
-        }, 101);
-    }
-    function init() {
-        var conatiner = document.getElementById('container');
-        container.style.width = window.innerWidth + 'px';
-        container.style.height = window.innerHeight + 'px';
-        container.style.display = 'block';
-    }
+      if(page != 'startPage')
+         document.addEventListener("backbutton", restart, false);
+      else
+         document.removeEventListener("backbutton");
+   }
 
-    function resizeElements() {
+   function resize() {
+      jQuery('.page').hide();
+      setTimeout(init, 100);
+      setTimeout(resizeElements, 101);
+      setTimeout(function () {
+         _currentPage.show()
+      }, 102);
 
-        _canvas = document.getElementById('canvas');
-        _img = document.getElementById('panties');
-        _restart = document.getElementById('restartButton');
-        _quote = document.getElementById('quote');
+   }
+   function initTimeout() {
 
-        _imgWidth = Math.floor(Math.max(window.innerWidth, window.innerHeight) * 0.45);
-        _imgWidth = Math.min(window.innerWidth, window.innerHeight, _imgWidth)
-        _imgHeight = _imgWidth;
+      jQuery('.page').hide();
+      _currentPage = jQuery('#startPage');
+      setTimeout(init, 100);
+      setTimeout(function () {
+         _currentPage.show()
+      }, 101);
+   }
+   function init() {
+      var container = jQuery('#container');
+      container.css('width', window.innerWidth);
+      container.css('height', window.innerHeight);
+      container.css('display', 'block');
+   }
 
-        _canvas.width = _imgWidth;
-        _canvas.height = _imgHeight;
-        _img.width = _imgWidth;
-        _img.height = _imgHeight;
+   function resizeElements() {
+//
+//        sourceImg = document.getElementById('canvas');
+//        _img = document.getElementById('panties');
+//        restart = document.getElementById('restartButton');
+//        quote = document.getElementById('quote');
 
-        if (window.innerWidth > window.innerHeight) {
-            _canvas.style.left = (window.innerWidth - 2 * _imgWidth) / 3 + 'px';
-            _canvas.style.top = (window.innerHeight - _imgHeight) / 2 + 'px';
-            _img.style.right = (window.innerWidth - 2 * _imgWidth) / 3 + 'px';
-            _img.style.top = (window.innerHeight - _imgHeight) / 2 + 'px';
-            _img.style.left = '';
-            _img.style.bottom = '';
-        } else {
-            _canvas.style.left = (window.innerWidth - _imgWidth) / 2 + 'px';
-            _canvas.style.top = (window.innerHeight - 2 * _imgHeight) / 3 + 'px';
-            _img.style.left = (window.innerWidth - _imgWidth) / 2 + 'px';
-            _img.style.bottom = (window.innerHeight - 2 * _imgHeight) / 3 + 'px';
-            _img.style.right = '';
-            _img.style.top = '';
-        }
-        _restart.style.left = (window.innerWidth - 160) / 2 + 'px';
-        _restart.style.bottom = 10 + 'px';
-        _quote.style.left = (window.innerWidth - 400) / 2 + 'px';
-        _quote.style.top = (window.innerHeight - 400) / 2 + 'px';
-        var rotation = Math.floor(Math.random() * 10) + 10;
-        rotation *= Math.random() > 0.5 ? -1 : 1;
+      var sourceImg = jQuery('.sourceImg');
+      var canvas = jQuery('#canvas');
+      var destImg = jQuery('.destImg');
+      _img = jQuery('#panties');
+      var processing = jQuery('#processing');
+      var scanner = jQuery('#scanner');
+      var restart = jQuery('#restartButton');
+      var quote = jQuery('#quote');
 
-        _quote.style.webkitTransform = 'rotate(' + rotation + 'deg)';   //Chrome and Safari
-        _quote.style.MozTransform = 'rotate(' + rotation + 'deg)';      //Firefox
+      _imgWidth = Math.floor(Math.max(window.innerWidth, window.innerHeight) * 0.45);
+      _imgWidth = Math.min(window.innerWidth, window.innerHeight, _imgWidth)
+      _imgHeight = _imgWidth;
 
-        _canvas.style.border = "2px solid  #ffff00";
-        _img.style.border = "2px solid  #ffff00";
-        var sWidth = Math.min(_cameraImage.width, _cameraImage.height);
-        var sx = (_cameraImage.width - sWidth) / 2;
-        var sy = (_cameraImage.height - sWidth) / 2;
-        _canvas.getContext("2d").drawImage(_cameraImage, sx, sy, sWidth, sWidth, 0, 0, _imgWidth, _imgHeight);
-    }
-    function onImage(e) {
-        resizeElements();
-        _img = document.getElementById('panties');
-        _quote = document.getElementById('quote');
-
-        var quoteText = QUOTES[Math.floor(Math.random() * QUOTES.length)];
-        _quote.innerText = "'" + quoteText + "!'";
-        var oldImage = _img.src;
-        var newImage = _img.src;
+      sourceImg.attr('width', _imgWidth);
+      sourceImg.attr('height', _imgHeight);
+      _img.attr('width', _imgWidth);
+      _img.attr('height', _imgHeight);
+      processing.css('width', _imgWidth);
+      processing.css('height', _imgHeight);
+      processing.css('lineHeight', _imgHeight + 'px');
 
 
-        while (oldImage.indexOf(newImage, oldImage.length - newImage.length) !== -1) {
-            newImage = 'img/cameltoe' + Math.floor(Math.random() * IMG_COUNT + 1) + '.jpg';
-        }
+      if (window.innerWidth > window.innerHeight) {
+         sourceImg.css('left', (window.innerWidth - 2 * _imgWidth) / 3);
+         sourceImg.css('top', (window.innerHeight - _imgHeight) / 2);
+         destImg.css('right', (window.innerWidth - 2 * _imgWidth) / 3);
+         destImg.css('top', (window.innerHeight - _imgHeight) / 2);
+         destImg.css('left', '');
+         destImg.css('bottom', '');
+      } else {
+         sourceImg.css('left', (window.innerWidth - _imgWidth) / 2);
+         sourceImg.css('top', (window.innerHeight - 2 * _imgHeight) / 3);
+         destImg.css('left', (window.innerWidth - _imgWidth) / 2);
+         destImg.css('bottom', (window.innerHeight - 2 * _imgHeight) / 3);
+         destImg.css('right', '');
+         destImg.css('top', '');
+      }
+      restart.css('left', (window.innerWidth - 160) / 2);
+      restart.css('bottom', 10);
+      quote.css('left', (window.innerWidth - 400) / 2);
+      quote.css('top', (window.innerHeight - 400) / 2);
+      var rotation = Math.floor(Math.random() * 10) + 10;
+      rotation *= Math.random() > 0.5 ? -1 : 1;
 
-        _img.src = newImage;
-        jQuery('.page').hide();
-        _currentPage = jQuery('#camelToePage');
-        _currentPage.show();
-    }
+      quote.css('webkitTransform', 'rotate(' + rotation + 'deg)');   //Chrome and Safari
+      quote.css('MozTransform', 'rotate(' + rotation + 'deg)');      //Firefox
+
+
+      _animPos = - _imgHeight / 2;
+
+      _img.css('border', "2px solid  #ffff00");
+      processing.css('border', "2px solid  transparent");
+      scanner.css('border', "2px solid  transparent");
+      canvas.css('border', "2px solid  #ffff00");
+      var sWidth = Math.min(_cameraImage.width, _cameraImage.height);
+      var sx = (_cameraImage.width - sWidth) / 2;
+      var sy = (_cameraImage.height - sWidth) / 2;
+      canvas[0].getContext("2d").drawImage(_cameraImage, sx, sy, sWidth, sWidth, 0, 0, _imgWidth, _imgHeight);
+
+   }
+
+
+   function onImage(e) {
+      resizeElements();
+      _img = jQuery('#panties');
+
+      var quote = jQuery('#quote');
+
+
+      var quoteText = QUOTES[Math.floor(Math.random() * QUOTES.length)];
+      quote.innerText = "'" + quoteText + "!'";
+      var oldImage = _img.attr('src');
+      var newImage = _img.attr('src');
+
+
+      while (oldImage.indexOf(newImage, oldImage.length - newImage.length) !== -1) {
+         newImage = 'img/cameltoe' + Math.floor(Math.random() * IMG_COUNT + 1) + '.jpg';
+      }
+
+      _img.hide();
+      _img.attr('src', newImage);
+
+      jQuery('#quote').hide();
+      jQuery('.page').hide();
+      _currentPage = jQuery('#camelToePage');
+      _currentPage.show();
+
+      _scanImg = new Image();
+      _scanImg.addEventListener('load', startScanner, false);
+      _scanImg.src = "scan.png";
+   }
+
+   window.requestAnimFrame = (function (callback) {
+      return window.requestAnimationFrame ||
+         window.webkitRequestAnimationFrame ||
+         window.mozRequestAnimationFrame ||
+         window.oRequestAnimationFrame ||
+         window.msRequestAnimationFrame ||
+         function (callback) {
+            window.setTimeout(callback, 1000 / 30);
+         };
+   })();
+
+   var _animPos;
+   var _animLastFrame;
+   var _animStart;
+   var _animDirection;
+   var _scanningTime;
+
+   function startScanner() {
+      _animPos = -_imgHeight/2;
+      _animLastFrame = new Date().getTime();
+      _animStart = new Date().getTime();
+      _scanningTime = Math.random()*1800 + 1800;
+      _animDirection = 1;
+      jQuery('#scanner').show();
+      jQuery('#processing').show();
+      animate();
+
+   }
+
+
+   function animate() {
+
+      var reqAnimFrame = window.mozRequestAnimationFrame    ||
+         window.webkitRequestAnimationFrame ||
+         window.msRequestAnimationFrame     ||
+         window.oRequestAnimationFrame ||
+         function(callback) {
+            window.setTimeout(callback, 1000 / 30);
+         };
+      ;
+//      alert(reqAnimFrame);
+
+
+      var now = new Date().getTime();
+
+      if(now - _animStart > _scanningTime) {
+         jQuery('#scanner').hide();
+         jQuery('#processing').hide();
+         jQuery('#panties').show();
+         jQuery('#quote').show();
+      } else {
+         reqAnimFrame(animate);
+      }
+      _animPos += _animDirection * (now - _animLastFrame);
+      _animLastFrame = now;
+
+      if(_animPos < -_imgHeight/2 || _animPos > _imgHeight/2){
+         _animDirection = -_animDirection;
+      }
+
+      draw();
+   }
+
+
+   function draw() {
+//      alert('draw');
+      var canvas  = document.getElementById("scanner");
+      var context = canvas.getContext("2d");
+
+      context.clearRect(0, 0, _imgWidth, _imgHeight);
+      context.fillStyle = "#ff00ff";
+//      context.fillRect(0, _animPos, 25, 25);
+      context.drawImage(_scanImg, 0, _animPos, _imgWidth, _imgHeight);
+   }
+function restart() {
+   jQuery('.page').hide();
+   _currentPage = jQuery('#startPage');
+   init();
+   _currentPage.show();
+
+}
+
 
 </script>
 </head>
 <body style="margin: 0px; padding: 0px; background-color: black">
 <div style="display: none; position: relative; background-image: url(bg2.png)" id="container">
-    <div id="startPage" style="display: none" class="page">
-        <div style="padding: 45px">
+   <div id="startPage" style="display: none" class="page">
+      <div style="padding: 45px">
 
-            <button id="startButton" class="button startButton" onclick="getPicture()">Take picture!</button>
-            <br/>
-            <br/>
-            <button id="" class="button startButton" onclick="browserTest()">Test!</button>
-        </div>
-    </div>
-    <div id="camelToePage" style="display: none" class="page">
+         <button id="startButton" class="button startButton" onclick="getPicture(Camera.PictureSourceType.CAMERA)">Take picture!</button>
+         <br/>
+         <br/>
+         <button id="" class="button startButton" onclick="getPicture(Camera.PictureSourceType.SAVEDPHOTOALBUM)">Select from gallery!</button>
+         <br/>
+         <br/>
+         <button id="" class="button startButton" onclick="browserTest()">Test!</button>
+      </div>
+   </div>
+   <div id="camelToePage" style="display: none" class="page">
 
-        <canvas id="canvas" style="position: absolute" width="0" height="0" class="drop-shadow"></canvas>
-        <img id="panties" style="position: absolute" width="0" height="0" class="drop-shadow" src=""/>
+      <canvas id="canvas" style="position: absolute" width="0" height="0" class="drop-shadow sourceImg"></canvas>
+      <canvas id="scanner" style="position: absolute" width="0" height="0" class="drop-shadow sourceImg"></canvas>
+      <img id="panties" style="position: absolute; display: none" width="0" height="0" class="drop-shadow destImg" src=""/>
+      <div id="processing" class="destImg sweet"
+           style="display: none; position: absolute; z-index: 900; text-align: center; vertical-align: middle;">
+         Processing...
+      </div>
 
-        <button id="restartButton" class="button startButton" style="position: absolute" onclick="getPicture()">
-            Restart!
-        </button>
-        <button id="restartButton2" class="button startButton" style="position: absolute" onclick="browserTest()">
-            Restart Browser!
-        </button>
+      <button id="restartButton" class="button startButton" style="position: absolute" onclick="restart()">
+         Restart!
+      </button>
 
-        <div id="quote" class="sweet"
-             style="position: absolute; z-index: 900;width: 400px; height:400px;text-align: center; vertical-align: middle; line-height: 400px">
-            'Sweet!'
-        </div>
-    </div>
+      <div id="quote" class="sweet"
+           style="position: absolute; z-index: 900;width: 400px; height:400px;text-align: center; vertical-align: middle; line-height: 400px">
+         'Sweet!'
+      </div>
+   </div>
 
 
 </div>
