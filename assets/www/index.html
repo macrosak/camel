@@ -17,15 +17,9 @@
 
 <style>
 
-
-      /*@font-face {*/
-      /*font-family: 'QuoteFont';*/
-      /*font-style: normal;*/
-      /*font-weight: 400;*/
-      /*src: local('QuoteFont'), local('QuoteFont-Regular'), url(quote-font.woff) format('woff');*/
-      /*src: local('QuoteFont'), local('QuoteFont-Regular'), url("file:///android_asset/www/quote-font.woff") format('woff');*/
-      /*src: url("file:///android_asset/www/quote-font2.ttf") format('truetype');*/
-      /*}*/
+   body {
+      font-size: medium;
+   }
 
    @font-face {
       font-family: 'QuoteFont';
@@ -51,7 +45,7 @@
       /*box-shadow: rgba(0,0,0,1) 0 1px 0;*/
       /*text-shadow: rgba(0,0,0,.4) 0 1px 0;*/
       color: #000000;
-      font-size: 20px;
+      font-size: large;
       font-family: 'QuoteFont';
       text-decoration: none;
       vertical-align: middle;
@@ -72,7 +66,7 @@
 
    .sweet {
       font-family: 'QuoteFont', cursive;
-      font-size: 60px;
+      font-size: 4em;
       color: #ffff00;
       text-shadow: 0px -3px 0px #000000, 3px 0px 0px #000000, 0px 3px 0px #000000, -3px 0px 0px #000000;
    }
@@ -105,6 +99,7 @@
       // Web page
       jQuery(document).ready(function () {
          jQuery('.page').hide();
+         jQuery('#startPageButtons').append('<br/><br/><button class="button startButton" onclick="browserTest()">Test!</button>')
          _currentPage = jQuery('#startPage');
          init();
          _currentPage.show();
@@ -296,6 +291,7 @@
          };
    })();
 
+   var SCAN_SPEED = 600; // ms from top to botttom
    var _animPos;
    var _animLastFrame;
    var _animStart;
@@ -325,8 +321,6 @@
             window.setTimeout(callback, 1000 / 30);
          };
       ;
-//      alert(reqAnimFrame);
-
 
       var now = new Date().getTime();
 
@@ -338,7 +332,8 @@
       } else {
          reqAnimFrame(animate);
       }
-      _animPos += _animDirection * (now - _animLastFrame);
+      var timeDiff = now - _animLastFrame;
+      _animPos += _animDirection * (timeDiff/SCAN_SPEED) * _imgHeight;
       _animLastFrame = now;
 
       if(_animPos < -_imgHeight/2 || _animPos > _imgHeight/2){
@@ -373,15 +368,13 @@ function restart() {
 <body style="margin: 0px; padding: 0px; background-color: black">
 <div style="display: none; position: relative; background-image: url(bg2.png)" id="container">
    <div id="startPage" style="display: none" class="page">
-      <div style="padding: 45px">
+      <div style="padding: 45px" id="startPageButtons">
 
          <button id="startButton" class="button startButton" onclick="getPicture(Camera.PictureSourceType.CAMERA)">Take picture!</button>
          <br/>
          <br/>
-         <button id="" class="button startButton" onclick="getPicture(Camera.PictureSourceType.SAVEDPHOTOALBUM)">Select from gallery!</button>
-         <br/>
-         <br/>
-         <button id="" class="button startButton" onclick="browserTest()">Test!</button>
+         <button class="button startButton" onclick="getPicture(Camera.PictureSourceType.SAVEDPHOTOALBUM)">Select from gallery!</button>
+
       </div>
    </div>
    <div id="camelToePage" style="display: none" class="page">
@@ -390,7 +383,8 @@ function restart() {
       <canvas id="scanner" style="position: absolute" width="0" height="0" class="drop-shadow sourceImg"></canvas>
       <img id="panties" style="position: absolute; display: none" width="0" height="0" class="drop-shadow destImg" src=""/>
       <div id="processing" class="destImg sweet"
-           style="display: none; position: absolute; z-index: 900; text-align: center; vertical-align: middle;">
+           style="display: none; position: absolute; z-index: 900; text-align: center; vertical-align: middle; font-size: 2em;">
+         <img src="load3.gif"/>
          Processing...
       </div>
 
